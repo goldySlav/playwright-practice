@@ -1,0 +1,22 @@
+{
+  "name": "playwright-practice",
+  "version": "1.0.0",
+  "description": "Playwright tests practice",
+  "main": "index.js",
+  "scripts": {
+    "test:e2e": "npx playwright test --project=chosen-browsers",
+    "test:e2e:chromium": "npx playwright test --project=chromium",
+    "test:e2e:firefox": "npx playwright test --project=firefox",
+    "test:e2e:webkit": "npx playwright test --project=webkit",
+    "test:e2e:all": "npx playwright test --project=all-browsers",
+    "test:e2e:smoke": "npx playwright test --grep @smoke --project=chosen-browsers",
+    "test:e2e:non-smoke": "npx playwright test --grep-invert @smoke --project=chosen-browsers"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.48.1",
+    "@types/node": "^22.7.7"
+  }
+}

@@ -1,3 +1,9 @@
 node_modules
 .nyc_output
 .npmrc
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+package-lock.json
+tests-examples
