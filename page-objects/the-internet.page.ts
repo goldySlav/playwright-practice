@@ -13,6 +13,7 @@ export class TheInternetPage {
       addRemoveElementsLink: page.locator('a', { hasText: 'Add/Remove Elements' }),
       basicAuthLink: page.locator('a', { hasText: 'Basic Auth' }),
       checkboxesLink: page.locator('a', { hasText: 'Checkboxes' }),
+      dragAndDropLink: page.locator('a', { hasText: 'Drag and Drop' }),
     }
   }
 
@@ -35,5 +36,9 @@ export class TheInternetPage {
 
   async clickCheckboxes() {
     await this.locators.checkboxesLink.click();
+  }
+
+  async clickDragAndDrop() {
+    await this.locators.dragAndDropLink.click();
   }
 }
