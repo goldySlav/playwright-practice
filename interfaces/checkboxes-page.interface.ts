@@ -1,6 +1,5 @@
-import { type Locator } from '@playwright/test';
+import { IBasicPageLocators } from './basic-page.interface';
 
-export interface ICheckboxesPageLocators {
-    pageHeader: Locator
+export interface ICheckboxesPageLocators extends IBasicPageLocators {
     checkbox: Function
 }

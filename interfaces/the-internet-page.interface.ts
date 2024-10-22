@@ -1,7 +1,7 @@
 import { type Locator } from '@playwright/test';
+import { IBasicPageLocators } from './basic-page.interface';
 
-export interface ITheInternetPageLocators {
-    pageHeader: Locator
+export interface ITheInternetPageLocators extends IBasicPageLocators {
     addRemoveElementsLink: Locator
     basicAuthLink: Locator
     checkboxesLink: Locator
