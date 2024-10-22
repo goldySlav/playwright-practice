@@ -11,6 +11,7 @@ export class TheInternetPage {
     this.locators = {
       welcomeHeader: page.locator('h1', { hasText: 'Welcome to the-internet' }),
       addRemoveElementsLink: page.locator('a', { hasText: 'Add/Remove Elements' }),
+      basicAuthLink: page.locator('a', { hasText: 'Basic Auth' }),
     }
   }
 
@@ -25,5 +26,9 @@ export class TheInternetPage {
 
   async clickAddRemoveElements() {
     await this.locators.addRemoveElementsLink.click();
+  }
+
+  async clickBasicAuth() {
+    await this.locators.basicAuthLink.click();
   }
 }
