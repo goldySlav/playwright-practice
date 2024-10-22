@@ -1,23 +1,19 @@
 import { expect, type Page } from '@playwright/test';
 import { IAddRemoveElementsPageLocators } from '../interfaces/add-remove-elements-page.interface';
+import { BasicPage } from './basic.page';
 
 
-export class AddRemoveElementsPage {
-  readonly page: Page;
+export class AddRemoveElementsPage extends BasicPage {
   readonly locators: IAddRemoveElementsPageLocators
 
   constructor(page: Page) {
-    this.page = page;
+    super(page)
     this.locators = {
       pageHeader: page.locator('h3', { hasText: 'Add/Remove Elements' }),
       addElementButton: page.locator('button', { hasText: "Add Element" }),
       deleteButton: page.locator('button', { hasText: "Delete" }),
     }
-  }
-
-  async goto() {
-    await this.page.goto('/add_remove_elements/');
-    await this.verifyHeaderPresent();
+    this.url = '/add_remove_elements/'
   }
 
   async clickAddElementsButton(times: number = 1) {
@@ -28,10 +24,6 @@ export class AddRemoveElementsPage {
 
   async clickDeleteButton(number: number = 1) {
     await this.locators.deleteButton.locator(`nth=${number - 1}`).click()
-  }
-
-  async verifyHeaderPresent() {
-    expect(this.locators.pageHeader).toBeVisible();
   }
 
   async verifyDeleteButtonsAmountEqual(amount: number) {

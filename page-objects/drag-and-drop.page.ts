@@ -1,23 +1,19 @@
-import { expect, type Page, type Locator } from '@playwright/test';
+import { type Page } from '@playwright/test';
 import { IDragAndDropPageLocators } from '../interfaces/drag-and-drop-page.interface';
+import { BasicPage } from './basic.page';
 
 
-export class DragAndDropPage {
-  readonly page: Page;
+export class DragAndDropPage extends BasicPage {
   readonly locators: IDragAndDropPageLocators
 
   constructor(page: Page) {
-    this.page = page;
+    super(page);
     this.locators = {
       pageHeader: page.locator('h3', { hasText: 'Drag and Drop' }),
       firstColumn: page.locator('div#column-a'),
       secondColumn: page.locator('div#column-b'),
     }
-  }
-
-  async goto() {
-    await this.page.goto('/drag_and_drop');
-    await this.verifyHeaderPresent();
+    this.url = '/drag_and_drop'
   }
 
   async getFirstElementText() {
@@ -34,9 +30,5 @@ export class DragAndDropPage {
 
   async dragFromRightToLeft() {
     await this.locators.secondColumn.dragTo(this.locators.firstColumn)
-  }
-
-  async verifyHeaderPresent() {
-    expect(this.locators.pageHeader).toBeVisible();
   }
 }

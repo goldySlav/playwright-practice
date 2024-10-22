@@ -1,14 +1,14 @@
 import { expect, type Page } from '@playwright/test';
 import { IBasicAuthPageLocators } from '../interfaces/basic-auth-page.interface';
+import { BasicPage } from './basic.page';
 
-export class BasicAuthPage {
-  readonly page: Page
+export class BasicAuthPage extends BasicPage {
   readonly locators: IBasicAuthPageLocators
   readonly authHeaderCorrect: string
   readonly authHeaderIncorrect: string
 
   constructor(page: Page) {
-    this.page = page;
+    super(page)
     this.locators = {
       pageHeader: page.locator('h3', { hasText: 'Basic Auth' }),
       congratsText: page.locator('p', { hasText: 'Congratulations!' }),
@@ -16,10 +16,7 @@ export class BasicAuthPage {
     }
     this.authHeaderCorrect = "Basic " + btoa(`${process.env.USER_NAME}:${process.env.PASSWORD}`)
     this.authHeaderIncorrect = "Basic " + btoa(`username:password`)
-  }
-
-  async goto() {
-    await this.page.goto('/basic_auth/');
+    this.url = '/basic_auth/'
   }
 
   async setCorrectCredentials() {
