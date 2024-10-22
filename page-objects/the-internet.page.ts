@@ -12,6 +12,7 @@ export class TheInternetPage {
       pageHeader: page.locator('h1', { hasText: 'Welcome to the-internet' }),
       addRemoveElementsLink: page.locator('a', { hasText: 'Add/Remove Elements' }),
       basicAuthLink: page.locator('a', { hasText: 'Basic Auth' }),
+      checkboxesLink: page.locator('a', { hasText: 'Checkboxes' }),
     }
   }
 
@@ -30,5 +31,9 @@ export class TheInternetPage {
 
   async clickBasicAuth() {
     await this.locators.basicAuthLink.click();
+  }
+
+  async clickCheckboxes() {
+    await this.locators.checkboxesLink.click();
   }
 }

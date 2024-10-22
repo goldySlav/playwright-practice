@@ -4,4 +4,5 @@ export interface ITheInternetPageLocators {
     pageHeader: Locator
     addRemoveElementsLink: Locator
     basicAuthLink: Locator
+    checkboxesLink: Locator
 }
