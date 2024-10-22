@@ -9,7 +9,7 @@ export class TheInternetPage {
   constructor(page: Page) {
     this.page = page;
     this.locators = {
-      welcomeHeader: page.locator('h1', { hasText: 'Welcome to the-internet' }),
+      pageHeader: page.locator('h1', { hasText: 'Welcome to the-internet' }),
       addRemoveElementsLink: page.locator('a', { hasText: 'Add/Remove Elements' }),
       basicAuthLink: page.locator('a', { hasText: 'Basic Auth' }),
     }
@@ -21,7 +21,7 @@ export class TheInternetPage {
   }
 
   async verifyHeaderPresent() {
-    expect(this.locators.welcomeHeader).toBeVisible();
+    expect(this.locators.pageHeader).toBeVisible();
   }
 
   async clickAddRemoveElements() {

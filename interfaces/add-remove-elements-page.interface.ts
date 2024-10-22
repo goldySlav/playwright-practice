@@ -1,7 +1,7 @@
 import { type Locator } from '@playwright/test';
 
 export interface IAddRemoveElementsPageLocators {
-    addRemoveElementsHeader: Locator
+    pageHeader: Locator
     addElementButton: Locator
     deleteButton: Locator
 }

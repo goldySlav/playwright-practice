@@ -1,7 +1,7 @@
 import { type Locator } from '@playwright/test';
 
 export interface IBasicAuthPageLocators {
-    basicAuthHeader: Locator
+    pageHeader: Locator
     congratsText: Locator
     loginFailText: Locator
 }

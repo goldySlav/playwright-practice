@@ -9,7 +9,7 @@ export class AddRemoveElementsPage {
   constructor(page: Page) {
     this.page = page;
     this.locators = {
-      addRemoveElementsHeader: page.locator('h3', { hasText: 'Add/Remove Elements' }),
+      pageHeader: page.locator('h3', { hasText: 'Add/Remove Elements' }),
       addElementButton: page.locator('button', { hasText: "Add Element" }),
       deleteButton: page.locator('button', { hasText: "Delete" }),
     }
@@ -31,7 +31,7 @@ export class AddRemoveElementsPage {
   }
 
   async verifyHeaderPresent() {
-    expect(this.locators.addRemoveElementsHeader).toBeVisible();
+    expect(this.locators.pageHeader).toBeVisible();
   }
 
   async verifyDeleteButtonsAmountEqual(amount: number) {

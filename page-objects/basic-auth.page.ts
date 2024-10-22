@@ -10,7 +10,7 @@ export class BasicAuthPage {
   constructor(page: Page) {
     this.page = page;
     this.locators = {
-      basicAuthHeader: page.locator('h3', { hasText: 'Basic Auth' }),
+      pageHeader: page.locator('h3', { hasText: 'Basic Auth' }),
       congratsText: page.locator('p', { hasText: 'Congratulations!' }),
       loginFailText: page.locator('body', { hasText: 'Not authorized' }),
     }
@@ -31,7 +31,7 @@ export class BasicAuthPage {
   }
 
   async verifyLoginSucceeded() {
-    expect(this.locators.basicAuthHeader).toBeVisible();
+    expect(this.locators.pageHeader).toBeVisible();
     expect(this.locators.congratsText).toBeVisible();
   }
 
