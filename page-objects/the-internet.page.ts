@@ -1,4 +1,4 @@
-import { expect, type Page } from '@playwright/test';
+import { type Page } from '@playwright/test';
 import { ITheInternetPageLocators } from '../interfaces/the-internet-page.interface';
 import { BasicPage } from './basic.page';
 
@@ -14,6 +14,7 @@ export class TheInternetPage extends BasicPage {
       checkboxesLink: page.locator('a', { hasText: 'Checkboxes' }),
       dragAndDropLink: page.locator('a', { hasText: 'Drag and Drop' }),
       dropdownLink: page.locator('a', { hasText: 'Dropdown' }),
+      inputsLink: page.locator('a', { hasText: 'Inputs' }),
     };
     this.url = '/';
   }
@@ -36,5 +37,9 @@ export class TheInternetPage extends BasicPage {
 
   async clickDropdown() {
     await this.locators.dropdownLink.click();
+  }
+
+  async clickInputs() {
+    await this.locators.inputsLink.click();
   }
 }
