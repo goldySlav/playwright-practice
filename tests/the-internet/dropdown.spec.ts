@@ -12,42 +12,46 @@
 
 import { expect, test } from '@playwright/test';
 import { TheInternetPage } from '../../page-objects/the-internet.page';
-import { DropdownPage } from "../../page-objects/dropdown.page"
+import { DropdownPage } from '../../page-objects/dropdown.page';
 
 test('Page Can Be Opened @smoke', async ({ page }) => {
-  const theInternetPage = new TheInternetPage(page)
-  const dropdownPage = new DropdownPage(page)
-  await theInternetPage.goto()
+  const theInternetPage = new TheInternetPage(page);
+  const dropdownPage = new DropdownPage(page);
+  await theInternetPage.goto();
   await theInternetPage.clickDropdown();
   await dropdownPage.verifyHeaderPresent();
 });
 
-test('Default option is selected by default', async ({ page }) => { //1
-  const dropdownPage = new DropdownPage(page)
-  await dropdownPage.goto()
-  
-  expect(await dropdownPage.getSelectedOption()).toBe(dropdownPage.options.default)
+test('Default option is selected by default', async ({ page }) => {
+  //1
+  const dropdownPage = new DropdownPage(page);
+  await dropdownPage.goto();
+
+  expect(await dropdownPage.getSelectedOption()).toBe(dropdownPage.options.default);
 });
 
-test('"Option 1" can be selected', async ({ page }) => { //2
-  const dropdownPage = new DropdownPage(page)
-  await dropdownPage.goto()
+test('"Option 1" can be selected', async ({ page }) => {
+  //2
+  const dropdownPage = new DropdownPage(page);
+  await dropdownPage.goto();
 
-  await dropdownPage.locators.dropdown.selectOption(dropdownPage.options.option1)
-  expect(await dropdownPage.getSelectedOption()).toBe(dropdownPage.options.option1)
+  await dropdownPage.locators.dropdown.selectOption(dropdownPage.options.option1);
+  expect(await dropdownPage.getSelectedOption()).toBe(dropdownPage.options.option1);
 });
 
-test('"Option 2" can be selected', async ({ page }) => { //3
-  const dropdownPage = new DropdownPage(page)
-  await dropdownPage.goto()
+test('"Option 2" can be selected', async ({ page }) => {
+  //3
+  const dropdownPage = new DropdownPage(page);
+  await dropdownPage.goto();
 
-  await dropdownPage.locators.dropdown.selectOption(dropdownPage.options.option2)
-  expect(await dropdownPage.getSelectedOption()).toBe(dropdownPage.options.option2)
+  await dropdownPage.locators.dropdown.selectOption(dropdownPage.options.option2);
+  expect(await dropdownPage.getSelectedOption()).toBe(dropdownPage.options.option2);
 });
 
-test('Default option is disabled', async ({ page }) => { //4
-  const dropdownPage = new DropdownPage(page)
-  await dropdownPage.goto()
+test('Default option is disabled', async ({ page }) => {
+  //4
+  const dropdownPage = new DropdownPage(page);
+  await dropdownPage.goto();
 
-  expect(dropdownPage.locators.defaultOption()).toBeDisabled()
+  expect(dropdownPage.locators.defaultOption()).toBeDisabled();
 });

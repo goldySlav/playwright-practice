@@ -2,19 +2,18 @@ import { expect, type Page, type Locator } from '@playwright/test';
 import { ICheckboxesPageLocators } from '../interfaces/checkboxes-page.interface';
 import { BasicPage } from './basic.page';
 
-
 export class CheckboxesPage extends BasicPage {
-  readonly locators: ICheckboxesPageLocators
+  readonly locators: ICheckboxesPageLocators;
 
   constructor(page: Page) {
-    super(page)
+    super(page);
     this.locators = {
       pageHeader: page.locator('h3', { hasText: 'Checkboxes' }),
       checkbox: function (number: number): Locator {
-        return page.getByRole("checkbox").locator(`nth=${number - 1}`)
-      }
-    }
-    this.url = '/checkboxes'
+        return page.getByRole('checkbox').locator(`nth=${number - 1}`);
+      },
+    };
+    this.url = '/checkboxes';
   }
 
   async checkCheckbox(number: number) {

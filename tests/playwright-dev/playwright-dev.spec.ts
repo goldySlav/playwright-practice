@@ -10,27 +10,29 @@
 
 import { test, expect } from '@playwright/test';
 
-const baseURL = 'https://playwright.dev'
+const baseURL = 'https://playwright.dev';
 
 test.beforeEach(async ({ page }) => {
-  await page.goto(baseURL)
-})
+  await page.goto(baseURL);
+});
 
-test('Page Can Be Opened @smoke', async ({ page }) => { //1
+test('Page Can Be Opened @smoke', async ({ page }) => {
+  //1
   await expect(page).toHaveTitle(/Playwright/);
 });
 
-test('Click on "Get Started" @smoke', async ({ page }) => { //2
-  await page.getByRole("link", {name: "Get started"}).click()
+test('Click on "Get Started" @smoke', async ({ page }) => {
+  //2
+  await page.getByRole('link', { name: 'Get started' }).click();
   await expect(page).not.toHaveTitle(/Installation/);
-})
+});
 
 test('Check Java Page', async ({ page }) => {
-  await page.getByRole("link", {name: "Get started"}).click()
-  await page.getByRole("button", {name: "Node.js"}).hover() //3
-  await page.getByRole("navigation", {name: "Main"}).getByText("Java").click() //4
+  await page.getByRole('link', { name: 'Get started' }).click();
+  await page.getByRole('button', { name: 'Node.js' }).hover(); //3
+  await page.getByRole('navigation', { name: 'Main' }).getByText('Java').click(); //4
 
-  await expect(page).toHaveURL(`${baseURL}/java/docs/intro`) //5
-  await expect(page.getByText("Installing Playwright", { exact: true })).not.toBeVisible() //6
-  await expect(page.getByRole("tab", { name: "App.java" })).toBeVisible() //7
+  await expect(page).toHaveURL(`${baseURL}/java/docs/intro`); //5
+  await expect(page.getByText('Installing Playwright', { exact: true })).not.toBeVisible(); //6
+  await expect(page.getByRole('tab', { name: 'App.java' })).toBeVisible(); //7
 });

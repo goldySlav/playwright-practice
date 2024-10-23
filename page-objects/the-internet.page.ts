@@ -2,12 +2,11 @@ import { expect, type Page } from '@playwright/test';
 import { ITheInternetPageLocators } from '../interfaces/the-internet-page.interface';
 import { BasicPage } from './basic.page';
 
-
 export class TheInternetPage extends BasicPage {
-  readonly locators: ITheInternetPageLocators
+  readonly locators: ITheInternetPageLocators;
 
   constructor(page: Page) {
-    super(page)
+    super(page);
     this.locators = {
       pageHeader: page.locator('h1', { hasText: 'Welcome to the-internet' }),
       addRemoveElementsLink: page.locator('a', { hasText: 'Add/Remove Elements' }),
@@ -15,8 +14,8 @@ export class TheInternetPage extends BasicPage {
       checkboxesLink: page.locator('a', { hasText: 'Checkboxes' }),
       dragAndDropLink: page.locator('a', { hasText: 'Drag and Drop' }),
       dropdownLink: page.locator('a', { hasText: 'Dropdown' }),
-    }
-    this.url = "/"
+    };
+    this.url = '/';
   }
 
   async clickAddRemoveElements() {
