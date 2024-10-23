@@ -21,7 +21,7 @@ export class DropdownPage extends BasicPage {
         return page.locator("option", { hasText: text })
       },
       option1: () => this.locators.customOption(this.options.option1),
-      option2:() => this.locators.customOption(this.options.option2),
+      option2: () => this.locators.customOption(this.options.option2),
       defaultOption: () => this.locators.customOption(this.options.default),
       selectedOption: page.locator('option[selected="selected"]'),
     }
