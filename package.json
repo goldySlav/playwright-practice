@@ -10,14 +10,28 @@
     "test:e2e:webkit": "npx playwright test --project=webkit",
     "test:e2e:all": "npx playwright test --project=all-browsers",
     "test:e2e:smoke": "npx playwright test --grep @smoke --project=chosen-browsers",
-    "test:e2e:non-smoke": "npx playwright test --grep-invert @smoke --project=chosen-browsers"
+    "test:e2e:non-smoke": "npx playwright test --grep-invert @smoke --project=chosen-browsers",
+    "prepare": "husky install"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,css,scss,md}": [
+      "prettier --write"
+    ]
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.48.1",
-    "@types/node": "^22.7.7"
+    "@types/node": "^22.7.7",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.10",
+    "prettier": "^3.3.3"
   },
   "dependencies": {
     "dotenv": "^16.4.5"
