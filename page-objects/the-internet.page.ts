@@ -14,6 +14,7 @@ export class TheInternetPage extends BasicPage {
       basicAuthLink: page.locator('a', { hasText: 'Basic Auth' }),
       checkboxesLink: page.locator('a', { hasText: 'Checkboxes' }),
       dragAndDropLink: page.locator('a', { hasText: 'Drag and Drop' }),
+      dropdownLink: page.locator('a', { hasText: 'Dropdown' }),
     }
     this.url = "/"
   }
@@ -32,5 +33,9 @@ export class TheInternetPage extends BasicPage {
 
   async clickDragAndDrop() {
     await this.locators.dragAndDropLink.click();
+  }
+
+  async clickDropdown() {
+    await this.locators.dropdownLink.click();
   }
 }
