@@ -10,24 +10,14 @@
     "test:e2e:webkit": "npx playwright test --project=webkit",
     "test:e2e:all": "npx playwright test --project=all-browsers",
     "test:e2e:smoke": "npx playwright test --grep @smoke --project=chosen-browsers",
-    "test:e2e:non-smoke": "npx playwright test --grep-invert @smoke --project=chosen-browsers",
-    "precommit": "lint-staged"
-  },
-  "lint-staged": {
-    "*.ts": [
-      "./node_modules/prettier/bin/prettier.cjs --tab-width 2 --write",
-      "git add"
-    ]
+    "test:e2e:non-smoke": "npx playwright test --grep-invert @smoke --project=chosen-browsers"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.48.1",
-    "@types/node": "^22.7.7",
-    "husky": "^9.1.6",
-    "lint-staged": "^15.2.10",
-    "prettier": "^3.3.3"
+    "@types/node": "^22.7.7"
   },
   "dependencies": {
     "dotenv": "^16.4.5"
