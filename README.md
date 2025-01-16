@@ -10,12 +10,12 @@ Playwright tests practice
 ## Run tests options:
 
 1. `npm run test:e2e` to run ALL tests on CHOSEN browsers (by default: Desktop Chrome, Desktop Firefox)
-2. `npm run test:chromium` to run ALL tests on CHROMIUM browser (Desktop Google Chrome)
-3. `npm run test:firefox` to run ALL tests on FIREFOX browser (Desktop Firefox)
-4. `npm run test:webkit` to run ALL tests on WEBKIT browser (Desktop Safari)
-5. `npm run test:all` to run ALL tests on ALL browser (Desktop Google Chrome, Desktop Firefox, Desktop Safari)
-6. `npm run test:smoke` to run `@smoke` tagged tests on CHOSEN browsers (by default: Desktop Chrome, Desktop Firefox)
-7. `npm run test:non-smoke` to run ALL tests except `@smoke` tagged tests on CHOSEN browsers (by default: Desktop Chrome, Desktop Firefox)
+2. `npm run test:e2e:chromium` to run ALL tests on CHROMIUM browser (Desktop Google Chrome)
+3. `npm run test:e2e:firefox` to run ALL tests on FIREFOX browser (Desktop Firefox)
+4. `npm run test:e2e:webkit` to run ALL tests on WEBKIT browser (Desktop Safari)
+5. `npm run test:e2e:all` to run ALL tests on ALL browser (Desktop Google Chrome, Desktop Firefox, Desktop Safari)
+6. `npm run test:e2e:smoke` to run `@smoke` tagged tests on CHOSEN browsers (by default: Desktop Chrome, Desktop Firefox)
+7. `npm run test:e2e:non-smoke` to run ALL tests except `@smoke` tagged tests on CHOSEN browsers (by default: Desktop Chrome, Desktop Firefox)
 
 ## Features:
 
