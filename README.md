@@ -1,13 +1,13 @@
 Playwright tests practice
 
-##Install:
+## Install:
 
-1. Clone/fork the repo
+1. Clone/Fork the repo
 2. Run `npm i` in terminal to install all dependencies
 3. Run `npx playwright install` in terminal to install playwright's browsers
 4. Run `npm run prepare` to properly install Husky (needed for automatic code prettifying)
 
-##Run tests options:
+## Run tests options:
 
 1. `npm run test:e2e` to run ALL tests on CHOSEN browsers (by default: Desktop Chrome, Desktop Firefox)
 2. `npm run test:chromium` to run ALL tests on CHROMIUM browser (Desktop Google Chrome)
@@ -17,11 +17,11 @@ Playwright tests practice
 6. `npm run test:smoke` to run `@smoke` tagged tests on CHOSEN browsers (by default: Desktop Chrome, Desktop Firefox)
 7. `npm run test:non-smoke` to run ALL tests except `@smoke` tagged tests on CHOSEN browsers (by default: Desktop Chrome, Desktop Firefox)
 
-##Features:
+## Features:
 
 1. Implemented Code Design Patterns:
    - Facade
-   - Page Object Model
+   - Page Object Model (POM)
 2. Secure storage of environment variables through `.env` file
 3. Automatic code prettifying on commit
 4. Smoke test suite
