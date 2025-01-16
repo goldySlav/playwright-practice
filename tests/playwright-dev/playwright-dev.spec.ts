@@ -16,12 +16,12 @@ test.beforeEach(async ({ page }) => {
   await page.goto(baseURL);
 });
 
-test('Page Can Be Opened @smoke', async ({ page }) => {
+test('Page Can Be Opened', async ({ page }) => {
   //1
   await expect(page).toHaveTitle(/Playwright/);
 });
 
-test('Click on "Get Started" @smoke', async ({ page }) => {
+test('Click on "Get Started"', async ({ page }) => {
   //2
   await page.getByRole('link', { name: 'Get started' }).click();
   await expect(page).not.toHaveTitle(/Installation/);
