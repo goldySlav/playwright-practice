@@ -1,7 +1,7 @@
 import { expect, type Page } from '@playwright/test';
 import { IBasicPageLocators } from '../interfaces/basic-page.interface';
 
-export class BasicPage {
+export abstract class BasicPage {
   readonly page: Page;
   public locators: IBasicPageLocators;
   protected url: string;
