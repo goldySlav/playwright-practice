@@ -8,4 +8,5 @@ export interface ITheInternetPageLocators extends IBasicPageLocators {
   dragAndDropLink: Locator;
   dropdownLink: Locator;
   inputsLink: Locator;
+  entryAdLink: Locator;
 }

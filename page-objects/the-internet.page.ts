@@ -15,6 +15,7 @@ export class TheInternetPage extends BasicPage {
       dragAndDropLink: page.locator('a', { hasText: 'Drag and Drop' }),
       dropdownLink: page.locator('a', { hasText: 'Dropdown' }),
       inputsLink: page.locator('a', { hasText: 'Inputs' }),
+      entryAdLink: page.locator('a', { hasText: 'Entry Ad' }),
     };
     this.url = '/';
   }
@@ -41,5 +42,9 @@ export class TheInternetPage extends BasicPage {
 
   async clickInputs() {
     await this.locators.inputsLink.click();
+  }
+
+  async clickEntryAd() {
+    await this.locators.entryAdLink.click();
   }
 }
