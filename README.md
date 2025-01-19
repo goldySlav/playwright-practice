@@ -16,6 +16,8 @@ Playwright tests practice
 5. `npm run test:e2e:all` to run ALL tests on ALL browser (Desktop Google Chrome, Desktop Firefox, Desktop Safari)
 6. `npm run test:e2e:smoke` to run `@smoke` tagged tests on CHOSEN browsers (by default: Desktop Chrome, Desktop Firefox)
 7. `npm run test:e2e:non-smoke` to run ALL tests except `@smoke` tagged tests on CHOSEN browsers (by default: Desktop Chrome, Desktop Firefox)
+8. `npx playwright test --headed` to run ALL tests on ALL browsers in HEADED mode
+9. `npx playwright test --ui` to open UI mode and execute/debug needed tests there on demand
 
 ## Features:
 
