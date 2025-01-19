@@ -1,4 +1,4 @@
-import { expect, type Page } from '@playwright/test';
+import { type Page } from '@playwright/test';
 import { IInputsPageLocators } from '../interfaces/inputs-page.interface';
 import { BasicPage } from './basic.page';
 
@@ -15,6 +15,6 @@ export class InputsPage extends BasicPage {
   }
 
   async fillNumbersInput(text: string) {
-    await this.locators.numbersInput.type(text);
+    await this.locators.numbersInput.fill(text);
   }
 }

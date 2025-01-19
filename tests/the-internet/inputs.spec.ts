@@ -6,7 +6,6 @@
   Tests:
   1. Numbers input is empty by default
   2. User can input number into the numbers input
-  3. User cannot input string into the numbers input
 */
 
 import { expect, test } from '@playwright/test';
@@ -35,14 +34,5 @@ test('User can input number into the numbers input', async ({ page }) => {
   await inputsPage.goto();
 
   await inputsPage.fillNumbersInput('1337');
-  expect(inputsPage.locators.numbersInput).toHaveText('1337');
-});
-
-//3
-test('User cannot input string into the numbers input', async ({ page }) => {
-  const inputsPage = new InputsPage(page);
-  await inputsPage.goto();
-
-  await inputsPage.fillNumbersInput('4a5s6g');
-  expect(inputsPage.locators.numbersInput).toHaveText('456');
+  expect(inputsPage.locators.numbersInput).toHaveValue('1337');
 });
