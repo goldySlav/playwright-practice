@@ -9,4 +9,5 @@ export interface ITheInternetPageLocators extends IBasicPageLocators {
   dropdownLink: Locator;
   inputsLink: Locator;
   framesLink: Locator;
+  entryAdLink: Locator;
 }
