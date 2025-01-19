@@ -19,6 +19,7 @@ export class BasicPage {
   }
 
   async verifyHeaderPresent() {
+    await this.page.waitForLoadState('domcontentloaded');
     expect(this.locators.pageHeader).toBeVisible();
   }
 }
