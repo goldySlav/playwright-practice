@@ -25,6 +25,7 @@ Playwright tests practice
    - Facade
    - Page Object Model (POM)
 2. Secure storage of environment variables through `.env` file
-3. Automatic code prettifying on commit
-4. Smoke test suite
-5. Regression test suite
+3. Authentication test with `Basic` token
+4. Automatic code prettifying on commit
+5. Smoke test suite
+6. Regression test suite
