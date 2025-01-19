@@ -21,11 +21,12 @@ Playwright tests practice
 
 ## Features:
 
-1. Implemented Code Design Patterns:
+1. Automatic Smoke Test Run on commit (GitHub Actions)
+2. Implemented Code Design Patterns:
    - Facade
    - Page Object Model (POM)
-2. Secure storage of environment variables through `.env` file
-3. Authentication test with dinamycally generated `Basic` token
-4. Automatic code prettifying on commit
-5. Smoke test suite
-6. Regression test suite
+3. Secure storage of environment variables through `.env` file
+4. Authentication test with dinamycally generated `Basic` token
+5. Automatic code prettifying on commit
+6. Smoke test suite
+7. Regression test suite
