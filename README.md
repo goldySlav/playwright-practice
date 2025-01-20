@@ -27,6 +27,7 @@ Playwright tests practice
    - Page Object Model (POM)
 3. Secure storage of environment variables through `.env` file
 4. Authentication test with dinamycally generated `Basic` token
-5. Automatic code prettifying on commit
-6. Smoke test suite
-7. Regression test suite
+5. iFrame interaction tests
+6. Automatic code prettifying on commit
+7. Smoke test suite
+8. Regression test suite
