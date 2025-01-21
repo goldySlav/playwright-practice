@@ -24,56 +24,47 @@ test('Page Can Be Opened @smoke', async ({ page }) => {
   await checkboxesPage.verifyHeaderPresent();
 });
 
-test('First checkbox is unchecked by default', async ({ page }) => {
-  //1
-  const checkboxesPage = new CheckboxesPage(page);
-  await checkboxesPage.goto();
+test.describe('Checkbox Tests', () => {
+  let checkboxesPage: CheckboxesPage;
 
-  await checkboxesPage.verifyCheckboxUnchecked(1);
-});
+  test.beforeEach(async ({ page }) => {
+    checkboxesPage = new CheckboxesPage(page);
+    await checkboxesPage.goto();
+  });
 
-test('First checkbox can be checked', async ({ page }) => {
-  //2
-  const checkboxesPage = new CheckboxesPage(page);
-  await checkboxesPage.goto();
+  test('First checkbox is unchecked by default', async () => {
+    //1
+    await checkboxesPage.verifyCheckboxUnchecked(1);
+  });
 
-  await checkboxesPage.checkCheckbox(1);
-  await checkboxesPage.verifyCheckboxChecked(1);
-});
+  test('First checkbox can be checked', async () => {
+    //2
+    await checkboxesPage.checkCheckbox(1);
+    await checkboxesPage.verifyCheckboxChecked(1);
+  });
 
-test('First checkbox can be unchecked', async ({ page }) => {
-  //3
-  const checkboxesPage = new CheckboxesPage(page);
-  await checkboxesPage.goto();
+  test('First checkbox can be unchecked', async () => {
+    //3
+    await checkboxesPage.checkCheckbox(1);
+    await checkboxesPage.uncheckCheckbox(1);
+    await checkboxesPage.verifyCheckboxUnchecked(1);
+  });
 
-  await checkboxesPage.checkCheckbox(1);
-  await checkboxesPage.uncheckCheckbox(1);
-  await checkboxesPage.verifyCheckboxUnchecked(1);
-});
+  test('Second checkbox is checked by default', async () => {
+    //4
+    await checkboxesPage.verifyCheckboxChecked(2);
+  });
 
-test('Second checkbox is checked by default', async ({ page }) => {
-  //4
-  const checkboxesPage = new CheckboxesPage(page);
-  await checkboxesPage.goto();
+  test('Second checkbox can be unchecked', async () => {
+    //5
+    await checkboxesPage.uncheckCheckbox(2);
+    await checkboxesPage.verifyCheckboxUnchecked(2);
+  });
 
-  await checkboxesPage.verifyCheckboxChecked(2);
-});
-
-test('Second checkbox can be unchecked', async ({ page }) => {
-  //5
-  const checkboxesPage = new CheckboxesPage(page);
-  await checkboxesPage.goto();
-
-  await checkboxesPage.uncheckCheckbox(2);
-  await checkboxesPage.verifyCheckboxUnchecked(2);
-});
-
-test('Second checkbox can be checked', async ({ page }) => {
-  //6
-  const checkboxesPage = new CheckboxesPage(page);
-  await checkboxesPage.goto();
-
-  await checkboxesPage.uncheckCheckbox(2);
-  await checkboxesPage.checkCheckbox(2);
-  await checkboxesPage.verifyCheckboxChecked(2);
+  test('Second checkbox can be checked', async () => {
+    //6
+    await checkboxesPage.uncheckCheckbox(2);
+    await checkboxesPage.checkCheckbox(2);
+    await checkboxesPage.verifyCheckboxChecked(2);
+  });
 });
