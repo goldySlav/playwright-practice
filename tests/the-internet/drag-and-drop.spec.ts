@@ -24,60 +24,51 @@ test('Page Can Be Opened @smoke', async ({ page }) => {
   await dragAndDropPage.verifyHeaderPresent();
 });
 
-test('"A" element is placed in the first column by default', async ({ page }) => {
-  //1
-  const dragAndDropPage = new DragAndDropPage(page);
-  await dragAndDropPage.goto();
+test.describe('Drag & Drop Tests', () => {
+  let dragAndDropPage: DragAndDropPage;
 
-  expect(await dragAndDropPage.getFirstElementText()).toBe('A');
-});
+  test.beforeEach(async ({ page }) => {
+    dragAndDropPage = new DragAndDropPage(page);
+    await dragAndDropPage.goto();
+  });
 
-test('"A" element can be drag and droppped into the second column', async ({ page }) => {
-  //2
-  const dragAndDropPage = new DragAndDropPage(page);
-  await dragAndDropPage.goto();
+  test('"A" element is placed in the first column by default', async () => {
+    //1
+    expect(await dragAndDropPage.getFirstElementText()).toBe('A');
+  });
 
-  await dragAndDropPage.dragFromLeftToRight();
-  expect(await dragAndDropPage.getFirstElementText()).toBe('B');
-  expect(await dragAndDropPage.getSecondElementText()).toBe('A');
-});
+  test('"A" element can be drag and droppped into the second column', async () => {
+    //2
+    await dragAndDropPage.dragFromLeftToRight();
+    expect(await dragAndDropPage.getFirstElementText()).toBe('B');
+    expect(await dragAndDropPage.getSecondElementText()).toBe('A');
+  });
 
-test('Verify "A" element can be drag and droppped back into the first column', async ({ page }) => {
-  //3
-  const dragAndDropPage = new DragAndDropPage(page);
-  await dragAndDropPage.goto();
+  test('Verify "A" element can be drag and droppped back into the first column', async () => {
+    //3
+    await dragAndDropPage.dragFromLeftToRight();
+    await dragAndDropPage.dragFromRightToLeft();
+    expect(await dragAndDropPage.getFirstElementText()).toBe('A');
+    expect(await dragAndDropPage.getSecondElementText()).toBe('B');
+  });
 
-  await dragAndDropPage.dragFromLeftToRight();
-  await dragAndDropPage.dragFromRightToLeft();
-  expect(await dragAndDropPage.getFirstElementText()).toBe('A');
-  expect(await dragAndDropPage.getSecondElementText()).toBe('B');
-});
+  test('"B" element is placed in the second column by default', async () => {
+    //4
+    expect(await dragAndDropPage.getSecondElementText()).toBe('B');
+  });
 
-test('"B" element is placed in the second column by default', async ({ page }) => {
-  //4
-  const dragAndDropPage = new DragAndDropPage(page);
-  await dragAndDropPage.goto();
+  test('"B" element can be drag and droppped into the first column', async () => {
+    //5
+    await dragAndDropPage.dragFromRightToLeft();
+    expect(await dragAndDropPage.getFirstElementText()).toBe('B');
+    expect(await dragAndDropPage.getSecondElementText()).toBe('A');
+  });
 
-  expect(await dragAndDropPage.getSecondElementText()).toBe('B');
-});
-
-test('"B" element can be drag and droppped into the first column', async ({ page }) => {
-  //5
-  const dragAndDropPage = new DragAndDropPage(page);
-  await dragAndDropPage.goto();
-
-  await dragAndDropPage.dragFromRightToLeft();
-  expect(await dragAndDropPage.getFirstElementText()).toBe('B');
-  expect(await dragAndDropPage.getSecondElementText()).toBe('A');
-});
-
-test('Verify "B" element can be drag and droppped back into the second column', async ({ page }) => {
-  //6
-  const dragAndDropPage = new DragAndDropPage(page);
-  await dragAndDropPage.goto();
-
-  await dragAndDropPage.dragFromRightToLeft();
-  await dragAndDropPage.dragFromLeftToRight();
-  expect(await dragAndDropPage.getFirstElementText()).toBe('A');
-  expect(await dragAndDropPage.getSecondElementText()).toBe('B');
+  test('Verify "B" element can be drag and droppped back into the second column', async () => {
+    //6
+    await dragAndDropPage.dragFromRightToLeft();
+    await dragAndDropPage.dragFromLeftToRight();
+    expect(await dragAndDropPage.getFirstElementText()).toBe('A');
+    expect(await dragAndDropPage.getSecondElementText()).toBe('B');
+  });
 });
