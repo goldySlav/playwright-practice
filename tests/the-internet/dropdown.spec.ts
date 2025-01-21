@@ -22,36 +22,33 @@ test('Page Can Be Opened @smoke', async ({ page }) => {
   await dropdownPage.verifyHeaderPresent();
 });
 
-test('Default option is selected by default', async ({ page }) => {
-  //1
-  const dropdownPage = new DropdownPage(page);
-  await dropdownPage.goto();
+test.describe('Dropdown Tests', () => {
+  let dropdownPage: DropdownPage;
 
-  expect(await dropdownPage.getSelectedOption()).toBe(dropdownPage.options.default);
-});
+  test.beforeEach(async ({ page }) => {
+    dropdownPage = new DropdownPage(page);
+    await dropdownPage.goto();
+  });
 
-test('"Option 1" can be selected', async ({ page }) => {
-  //2
-  const dropdownPage = new DropdownPage(page);
-  await dropdownPage.goto();
+  test('Default option is selected by default', async () => {
+    //1
+    expect(await dropdownPage.getSelectedOption()).toBe(dropdownPage.options.default);
+  });
 
-  await dropdownPage.locators.dropdown.selectOption(dropdownPage.options.option1);
-  expect(await dropdownPage.getSelectedOption()).toBe(dropdownPage.options.option1);
-});
+  test('"Option 1" can be selected', async () => {
+    //2
+    await dropdownPage.locators.dropdown.selectOption(dropdownPage.options.option1);
+    expect(await dropdownPage.getSelectedOption()).toBe(dropdownPage.options.option1);
+  });
 
-test('"Option 2" can be selected', async ({ page }) => {
-  //3
-  const dropdownPage = new DropdownPage(page);
-  await dropdownPage.goto();
+  test('"Option 2" can be selected', async () => {
+    //3
+    await dropdownPage.locators.dropdown.selectOption(dropdownPage.options.option2);
+    expect(await dropdownPage.getSelectedOption()).toBe(dropdownPage.options.option2);
+  });
 
-  await dropdownPage.locators.dropdown.selectOption(dropdownPage.options.option2);
-  expect(await dropdownPage.getSelectedOption()).toBe(dropdownPage.options.option2);
-});
-
-test('Default option is disabled', async ({ page }) => {
-  //4
-  const dropdownPage = new DropdownPage(page);
-  await dropdownPage.goto();
-
-  expect(dropdownPage.locators.defaultOption()).toBeDisabled();
+  test('Default option is disabled', async () => {
+    //4
+    expect(dropdownPage.locators.defaultOption()).toBeDisabled();
+  });
 });
