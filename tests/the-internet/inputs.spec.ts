@@ -20,19 +20,22 @@ test('Page Can Be Opened @smoke', async ({ page }) => {
   await inputsPage.verifyHeaderPresent();
 });
 
-//1
-test('Numbers input is empty by default', async ({ page }) => {
-  const inputsPage = new InputsPage(page);
-  await inputsPage.goto();
+test.describe('Inputs Tests', () => {
+  let inputsPage: InputsPage;
 
-  expect(inputsPage.locators.numbersInput).toBeEmpty();
-});
+  test.beforeEach(async ({ page }) => {
+    inputsPage = new InputsPage(page);
+    await inputsPage.goto();
+  });
 
-//2
-test('User can input number into the numbers input', async ({ page }) => {
-  const inputsPage = new InputsPage(page);
-  await inputsPage.goto();
+  //1
+  test('Numbers input is empty by default', async () => {
+    expect(inputsPage.locators.numbersInput).toBeEmpty();
+  });
 
-  await inputsPage.fillNumbersInput('1337');
-  expect(inputsPage.locators.numbersInput).toHaveValue('1337');
+  //2
+  test('User can input number into the numbers input', async () => {
+    await inputsPage.fillNumbersInput('1337');
+    expect(inputsPage.locators.numbersInput).toHaveValue('1337');
+  });
 });
