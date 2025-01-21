@@ -32,40 +32,40 @@ test.describe('Drag & Drop Tests', () => {
     await dragAndDropPage.goto();
   });
 
+  //1
   test('"A" element is placed in the first column by default', async () => {
-    //1
     expect(await dragAndDropPage.getFirstElementText()).toBe('A');
   });
 
+  //2
   test('"A" element can be drag and droppped into the second column', async () => {
-    //2
     await dragAndDropPage.dragFromLeftToRight();
     expect(await dragAndDropPage.getFirstElementText()).toBe('B');
     expect(await dragAndDropPage.getSecondElementText()).toBe('A');
   });
 
+  //3
   test('Verify "A" element can be drag and droppped back into the first column', async () => {
-    //3
     await dragAndDropPage.dragFromLeftToRight();
     await dragAndDropPage.dragFromRightToLeft();
     expect(await dragAndDropPage.getFirstElementText()).toBe('A');
     expect(await dragAndDropPage.getSecondElementText()).toBe('B');
   });
 
+  //4
   test('"B" element is placed in the second column by default', async () => {
-    //4
     expect(await dragAndDropPage.getSecondElementText()).toBe('B');
   });
 
+  //5
   test('"B" element can be drag and droppped into the first column', async () => {
-    //5
     await dragAndDropPage.dragFromRightToLeft();
     expect(await dragAndDropPage.getFirstElementText()).toBe('B');
     expect(await dragAndDropPage.getSecondElementText()).toBe('A');
   });
 
+  //6
   test('Verify "B" element can be drag and droppped back into the second column', async () => {
-    //6
     await dragAndDropPage.dragFromRightToLeft();
     await dragAndDropPage.dragFromLeftToRight();
     expect(await dragAndDropPage.getFirstElementText()).toBe('A');

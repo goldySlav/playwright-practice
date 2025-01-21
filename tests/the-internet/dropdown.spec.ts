@@ -30,25 +30,25 @@ test.describe('Dropdown Tests', () => {
     await dropdownPage.goto();
   });
 
+  //1
   test('Default option is selected by default', async () => {
-    //1
     expect(await dropdownPage.getSelectedOption()).toBe(dropdownPage.options.default);
   });
 
+  //2
   test('"Option 1" can be selected', async () => {
-    //2
     await dropdownPage.locators.dropdown.selectOption(dropdownPage.options.option1);
     expect(await dropdownPage.getSelectedOption()).toBe(dropdownPage.options.option1);
   });
 
+  //3
   test('"Option 2" can be selected', async () => {
-    //3
     await dropdownPage.locators.dropdown.selectOption(dropdownPage.options.option2);
     expect(await dropdownPage.getSelectedOption()).toBe(dropdownPage.options.option2);
   });
 
+  //4
   test('Default option is disabled', async () => {
-    //4
     expect(dropdownPage.locators.defaultOption()).toBeDisabled();
   });
 });

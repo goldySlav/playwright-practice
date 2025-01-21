@@ -33,51 +33,51 @@ test.describe('Dynamic Elements', () => {
     await addRemoveElementsPage.goto();
   });
 
+  //1
   test('Dynamic elements are absent by default', async () => {
-    //1
     await addRemoveElementsPage.verifyDeleteButtonsAmountEqual(0);
   });
 
+  //2
   test('Single element can be added', async () => {
-    //2
     await addRemoveElementsPage.clickAddElementsButton();
 
     await addRemoveElementsPage.verifyDeleteButtonsAmountEqual(1);
   });
 
+  //3
   test('Single element can be deleted', async () => {
-    //3
     await addRemoveElementsPage.clickAddElementsButton();
     await addRemoveElementsPage.clickDeleteButton(1);
 
     await addRemoveElementsPage.verifyDeleteButtonsAmountEqual(0);
   });
 
+  //4
   test('Multiple elements can be added', async () => {
-    //4
     await addRemoveElementsPage.clickAddElementsButton(3);
 
     await addRemoveElementsPage.verifyDeleteButtonsAmountEqual(3);
   });
 
+  //5
   test('First element can be removed', async () => {
-    //5
     await addRemoveElementsPage.clickAddElementsButton(2);
     await addRemoveElementsPage.clickDeleteButton(1);
 
     await addRemoveElementsPage.verifyDeleteButtonsAmountEqual(1);
   });
 
+  //6
   test('Second element can be removed', async () => {
-    //6
     await addRemoveElementsPage.clickAddElementsButton(2);
     await addRemoveElementsPage.clickDeleteButton(2);
 
     await addRemoveElementsPage.verifyDeleteButtonsAmountEqual(1);
   });
 
+  //7
   test('Multiple elements can be completely deleted', async () => {
-    //7
     await addRemoveElementsPage.clickAddElementsButton(3);
     await addRemoveElementsPage.clickDeleteButton(1);
     await addRemoveElementsPage.clickDeleteButton(1);

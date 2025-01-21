@@ -7,6 +7,7 @@
 import { test } from '@playwright/test';
 import { BasicAuthPage } from '../../page-objects/basic-auth.page';
 
+//1
 test('Login with correct credentials @smoke', async ({ page }) => {
   const basicAuthPage = new BasicAuthPage(page);
   await basicAuthPage.setCorrectCredentials();
@@ -14,6 +15,7 @@ test('Login with correct credentials @smoke', async ({ page }) => {
   await basicAuthPage.verifyLoginSucceeded();
 });
 
+//2
 test('Login with incorrect credentials', async ({ page }) => {
   const basicAuthPage = new BasicAuthPage(page);
   await basicAuthPage.setIncorrectCredentials();

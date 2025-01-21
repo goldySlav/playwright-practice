@@ -32,37 +32,37 @@ test.describe('Checkbox Tests', () => {
     await checkboxesPage.goto();
   });
 
+  //1
   test('First checkbox is unchecked by default', async () => {
-    //1
     await checkboxesPage.verifyCheckboxUnchecked(1);
   });
 
+  //2
   test('First checkbox can be checked', async () => {
-    //2
     await checkboxesPage.checkCheckbox(1);
     await checkboxesPage.verifyCheckboxChecked(1);
   });
 
+  //3
   test('First checkbox can be unchecked', async () => {
-    //3
     await checkboxesPage.checkCheckbox(1);
     await checkboxesPage.uncheckCheckbox(1);
     await checkboxesPage.verifyCheckboxUnchecked(1);
   });
 
+  //4
   test('Second checkbox is checked by default', async () => {
-    //4
     await checkboxesPage.verifyCheckboxChecked(2);
   });
 
+  //5
   test('Second checkbox can be unchecked', async () => {
-    //5
     await checkboxesPage.uncheckCheckbox(2);
     await checkboxesPage.verifyCheckboxUnchecked(2);
   });
 
+  //6
   test('Second checkbox can be checked', async () => {
-    //6
     await checkboxesPage.uncheckCheckbox(2);
     await checkboxesPage.checkCheckbox(2);
     await checkboxesPage.verifyCheckboxChecked(2);
