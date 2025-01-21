@@ -7,18 +7,24 @@
 import { test } from '@playwright/test';
 import { BasicAuthPage } from '../../page-objects/basic-auth.page';
 
-//1
-test('Login with correct credentials @smoke', async ({ page }) => {
-  const basicAuthPage = new BasicAuthPage(page);
-  await basicAuthPage.setCorrectCredentials();
-  await basicAuthPage.goto();
-  await basicAuthPage.verifyLoginSucceeded();
-});
+test.describe('Basic Auth Tests', () => {
+  let basicAuthPage: BasicAuthPage;
 
-//2
-test('Login with incorrect credentials', async ({ page }) => {
-  const basicAuthPage = new BasicAuthPage(page);
-  await basicAuthPage.setIncorrectCredentials();
-  await basicAuthPage.goto();
-  await basicAuthPage.verifyLoginFailed();
+  test.beforeEach(({ page }) => {
+    basicAuthPage = new BasicAuthPage(page);
+  });
+
+  //1
+  test('Login with correct credentials @smoke', async () => {
+    await basicAuthPage.setCorrectCredentials();
+    await basicAuthPage.goto();
+    await basicAuthPage.verifyLoginSucceeded();
+  });
+
+  //2
+  test('Login with incorrect credentials', async () => {
+    await basicAuthPage.setIncorrectCredentials();
+    await basicAuthPage.goto();
+    await basicAuthPage.verifyLoginFailed();
+  });
 });
