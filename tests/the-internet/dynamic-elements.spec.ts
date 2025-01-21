@@ -25,70 +25,64 @@ test('Page Can Be Opened @smoke', async ({ page }) => {
   await addRemoveElementsPage.verifyHeaderPresent();
 });
 
-test('Dynamic elements are absent by default', async ({ page }) => {
-  //1
-  const addRemoveElementsPage = new AddRemoveElementsPage(page);
-  await addRemoveElementsPage.goto();
+test.describe('Dynamic Elements', () => {
+  let addRemoveElementsPage: AddRemoveElementsPage;
 
-  await addRemoveElementsPage.verifyDeleteButtonsAmountEqual(0);
-});
+  test.beforeEach(async ({ page }) => {
+    addRemoveElementsPage = new AddRemoveElementsPage(page);
+    await addRemoveElementsPage.goto();
+  });
 
-test('Single element can be added', async ({ page }) => {
-  //2
-  const addRemoveElementsPage = new AddRemoveElementsPage(page);
-  await addRemoveElementsPage.goto();
-  await addRemoveElementsPage.clickAddElementsButton();
+  test('Dynamic elements are absent by default', async () => {
+    //1
+    await addRemoveElementsPage.verifyDeleteButtonsAmountEqual(0);
+  });
 
-  await addRemoveElementsPage.verifyDeleteButtonsAmountEqual(1);
-});
+  test('Single element can be added', async () => {
+    //2
+    await addRemoveElementsPage.clickAddElementsButton();
 
-test('Single element can be deleted', async ({ page }) => {
-  //3
-  const addRemoveElementsPage = new AddRemoveElementsPage(page);
-  await addRemoveElementsPage.goto();
-  await addRemoveElementsPage.clickAddElementsButton();
-  await addRemoveElementsPage.clickDeleteButton(1);
+    await addRemoveElementsPage.verifyDeleteButtonsAmountEqual(1);
+  });
 
-  await addRemoveElementsPage.verifyDeleteButtonsAmountEqual(0);
-});
+  test('Single element can be deleted', async () => {
+    //3
+    await addRemoveElementsPage.clickAddElementsButton();
+    await addRemoveElementsPage.clickDeleteButton(1);
 
-test('Multiple elements can be added', async ({ page }) => {
-  //4
-  const addRemoveElementsPage = new AddRemoveElementsPage(page);
-  await addRemoveElementsPage.goto();
-  await addRemoveElementsPage.clickAddElementsButton(3);
+    await addRemoveElementsPage.verifyDeleteButtonsAmountEqual(0);
+  });
 
-  await addRemoveElementsPage.verifyDeleteButtonsAmountEqual(3);
-});
+  test('Multiple elements can be added', async () => {
+    //4
+    await addRemoveElementsPage.clickAddElementsButton(3);
 
-test('First element can be removed', async ({ page }) => {
-  //5
-  const addRemoveElementsPage = new AddRemoveElementsPage(page);
-  await addRemoveElementsPage.goto();
-  await addRemoveElementsPage.clickAddElementsButton(2);
-  await addRemoveElementsPage.clickDeleteButton(1);
+    await addRemoveElementsPage.verifyDeleteButtonsAmountEqual(3);
+  });
 
-  await addRemoveElementsPage.verifyDeleteButtonsAmountEqual(1);
-});
+  test('First element can be removed', async () => {
+    //5
+    await addRemoveElementsPage.clickAddElementsButton(2);
+    await addRemoveElementsPage.clickDeleteButton(1);
 
-test('Second element can be removed', async ({ page }) => {
-  //6
-  const addRemoveElementsPage = new AddRemoveElementsPage(page);
-  await addRemoveElementsPage.goto();
-  await addRemoveElementsPage.clickAddElementsButton(2);
-  await addRemoveElementsPage.clickDeleteButton(2);
+    await addRemoveElementsPage.verifyDeleteButtonsAmountEqual(1);
+  });
 
-  await addRemoveElementsPage.verifyDeleteButtonsAmountEqual(1);
-});
+  test('Second element can be removed', async () => {
+    //6
+    await addRemoveElementsPage.clickAddElementsButton(2);
+    await addRemoveElementsPage.clickDeleteButton(2);
 
-test('Multiple elements can be completely deleted', async ({ page }) => {
-  //7
-  const addRemoveElementsPage = new AddRemoveElementsPage(page);
-  await addRemoveElementsPage.goto();
-  await addRemoveElementsPage.clickAddElementsButton(3);
-  await addRemoveElementsPage.clickDeleteButton(1);
-  await addRemoveElementsPage.clickDeleteButton(1);
-  await addRemoveElementsPage.clickDeleteButton(1);
+    await addRemoveElementsPage.verifyDeleteButtonsAmountEqual(1);
+  });
 
-  await addRemoveElementsPage.verifyDeleteButtonsAmountEqual(0);
+  test('Multiple elements can be completely deleted', async () => {
+    //7
+    await addRemoveElementsPage.clickAddElementsButton(3);
+    await addRemoveElementsPage.clickDeleteButton(1);
+    await addRemoveElementsPage.clickDeleteButton(1);
+    await addRemoveElementsPage.clickDeleteButton(1);
+
+    await addRemoveElementsPage.verifyDeleteButtonsAmountEqual(0);
+  });
 });
