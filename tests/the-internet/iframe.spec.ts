@@ -24,18 +24,21 @@ test('Page Can Be Opened @smoke', async ({ page }) => {
   await iFramePage.verifyHeaderPresent();
 });
 
-//1
-test('IFrame is present on the page', async ({ page }) => {
-  const iFramePage = new IFramePage(page);
-  await iFramePage.goto();
+test.describe('iFrame Tests', () => {
+  let iFramePage: IFramePage;
 
-  expect(iFramePage.locators.iFrameText()).toBeVisible();
-});
+  test.beforeEach(async ({ page }) => {
+    iFramePage = new IFramePage(page);
+    await iFramePage.goto();
+  });
 
-//2
-test('IFrame content can be accessed', async ({ page }) => {
-  const iFramePage = new IFramePage(page);
-  await iFramePage.goto();
+  //1
+  test('IFrame is present on the page', async () => {
+    expect(iFramePage.locators.iFrameText()).toBeVisible();
+  });
 
-  expect(await iFramePage.getIFrameInnerText()).toBe('Your content goes here.');
+  //2
+  test('IFrame content can be accessed', async () => {
+    expect(await iFramePage.getIFrameInnerText()).toBe('Your content goes here.');
+  });
 });
